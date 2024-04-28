@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="tv-page" class="grid gap-10 lg:p-36 p-3">
+  <section id="tv-page" class="grid gap-10 lg:p-36 p-3 dark:bg-zinc-950">
     <div class="flex items-center justify-start gap-6">
       <UHorizontalNavigation
         :links="links"

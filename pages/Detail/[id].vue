@@ -46,7 +46,9 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section id="movie-detail">
+  <section id="movie-detail"
+  class="dark:bg-zinc-950"
+  >
     <div
       v-if="result"
       :style="{

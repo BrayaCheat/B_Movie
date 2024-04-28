@@ -32,7 +32,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <section id="search-result" class="lg:p-36 p-3">
+  <section id="search-result" class="lg:p-36 p-3 dark:bg-zinc-950">
     <UHorizontalNavigation :links="links" class="mt-20" />
     Search Result: {{ searchData.length }}
     <div class="grid lg:grid-cols-5 grid-cols-2 gap-2">
