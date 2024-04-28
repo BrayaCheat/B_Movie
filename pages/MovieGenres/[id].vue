@@ -24,9 +24,8 @@ const getGenre = async () => {
       `https://api.themoviedb.org/3/discover/movie?api_key=8e832907917b59ca36ac1406c0ced35e&with_genres=${id}`
     )
     .then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       Genres.value = res.data.results;
-      
     })
     .catch((err) => console.log(err));
 };
@@ -38,7 +37,10 @@ onMounted(() => {
 
 <template>
   <section id="Genres">
-    <div class="grid md:grid-cols-5 grid-cols-2 gap-2 lg:p-36 p-3">
+    <div
+      v-if="Genres"
+      class="grid md:grid-cols-5 grid-cols-2 gap-2 lg:p-36 p-3 dark:bg-zinc-950"
+    >
       <UHorizontalNavigation
         :links="link"
         size="xl"
@@ -47,6 +49,9 @@ onMounted(() => {
       <div v-for="(genre, index) in Genres" :key="index">
         <MovieCard :movie="genre" />
       </div>
+    </div>
+    <div v-else>
+      <Skeleton />
     </div>
   </section>
   <bottomNav />

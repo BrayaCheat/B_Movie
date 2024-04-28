@@ -46,9 +46,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section id="movie-detail"
-  class="dark:bg-zinc-950"
-  >
+  <section id="movie-detail" class="dark:bg-zinc-950">
     <div
       v-if="result"
       :style="{
@@ -90,7 +88,9 @@ onMounted(() => {
           <article class="w-fit dark:text-gray-100 font-extralight">
             {{ result.overview }}
           </article>
-          <ul class="flex flex-col gap-3 dark:text-gray-300 text-sm font-extralight">
+          <ul
+            class="flex flex-col gap-3 dark:text-gray-300 text-sm font-extralight"
+          >
             <li class="flex flex-wrap items-center gap-3">
               <h1 class="w-[200px]">Genres:</h1>
               <div v-for="item in result.genres" :key="item">
@@ -147,9 +147,14 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <div v-else>
+      <Skeleton />
+    </div>
     <!-- movie_trailer -->
     <div class="my-10">
-      <h1 class="lg:px-36 px-3 md:py-10 py-6 text-2xl text-gray-700 dark:text-gray-400">
+      <h1
+        class="lg:px-36 px-3 md:py-10 py-6 text-2xl text-gray-700 dark:text-gray-400"
+      >
         Trailers
       </h1>
       <UCarousel
@@ -167,7 +172,9 @@ onMounted(() => {
           allowfullscreen
         ></iframe>
       </UCarousel>
-      <div v-else>loading...</div>
+      <div v-else>
+        <Skeleton />
+      </div>
     </div>
   </section>
   <bottomNav />

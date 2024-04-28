@@ -35,10 +35,13 @@ onBeforeMount(() => {
   <section id="search-result" class="lg:p-36 p-3 dark:bg-zinc-950">
     <UHorizontalNavigation :links="links" class="mt-20" />
     Search Result: {{ searchData.length }}
-    <div class="grid lg:grid-cols-5 grid-cols-2 gap-2">
+    <div v-if="searchData" class="grid lg:grid-cols-5 grid-cols-2 gap-2">
       <div v-for="(item, index) in searchData" :key="index">
         <MovieCard :movie="item" />
       </div>
+    </div>
+    <div v-else>
+      <Skeleton/>
     </div>
   </section>
 </template>

@@ -99,5 +99,8 @@ onMounted(() => {
         </template>
       </UPagination> -->
     </div>
+    <div v-else>
+      <Skeleton/>
+    </div>
   </section>
 </template>
