@@ -3,7 +3,9 @@ import BottomNav from '~/components/bottomNav.vue';
 </script>
 
 <template>
-  <section id="home-page">
+  <section id="home-page"
+  class="dark:bg-zinc-950"
+  >
     <Carousel/>
     <div class="flex lg:items-start gap-10 items-center lg:px-36 px-3">
       <sectionsLastestMovie class="lg:w-[70%]"/>
