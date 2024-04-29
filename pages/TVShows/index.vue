@@ -21,15 +21,14 @@ const page = ref(1);
 
 const fetchTVShow = async () => {
   try {
-    await axios
-      .get(
-        `https://api.themoviedb.org/3/discover/tv?page=${page.value}&api_key=8e832907917b59ca36ac1406c0ced35e`
-      )
-      .then((res) => {
-        console.log("TV Data => ", res.data);
-        tvData.value = res.data.results;
-        totalPages.value = res.data.total_pages;
-      });
+    const data = await $fetch('/api/tv-show', {
+      method: 'POST',
+      body: {
+        page: page.value
+      }
+    });
+    tvData.value = data.results;
+    totalPages.value = data.total_pages;
   } catch (error) {
     console.log(error);
   }

@@ -19,15 +19,17 @@ const link = [
 ];
 
 const getGenre = async () => {
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=8e832907917b59ca36ac1406c0ced35e&with_genres=${id}`
-    )
-    .then((res) => {
-      console.log(res.data);
-      Genres.value = res.data.results;
-    })
-    .catch((err) => console.log(err));
+  try {
+    const response = await $fetch(`/api/genres`, {
+      method: "POST",
+      body: {
+        id: id,
+      },
+    });
+    Genres.value = response.results
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 onMounted(() => {

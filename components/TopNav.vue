@@ -11,15 +11,7 @@ const isDark = computed({
   },
 });
 const searchQuery = ref("");
-const MovieGenres = ref([]);
-const TVGenres = ref([]);
-
-const account = ref({
-  username: "Braya Cheat",
-  email: "BrayaCheat@gmail.com",
-  password: "123",
-});
-
+const Genres = ref([]);
 const items = [
   // [
   //   {
@@ -73,29 +65,17 @@ const PassingSearch = () => {
   });
 };
 
-const getMovieGenres = async () => {
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=8e832907917b59ca36ac1406c0ced35e`
-    )
-    .then((res) => {
-      MovieGenres.value = res.data.genres;
+const getGenres = async () => {
+  try {
+    await axios.get(`/api/ListGenres`).then((res) => {
+      Genres.value = res.data.genres;
     });
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-const getTVGenres = async () => {
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/genre/tv/list?api_key=8e832907917b59ca36ac1406c0ced35e`
-    )
-    .then((res) => {
-      TVGenres.value = res.data.genres;
-    });
-};
-
 onMounted(() => {
-  getMovieGenres();
-  getTVGenres();
+  getGenres();
 });
 </script>
 
@@ -137,15 +117,14 @@ onMounted(() => {
               class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto"
             />
           </template>
-          <UPopover v-model:open="showPopup"
-          >
+          <UPopover v-model:open="showPopup">
             <UButton class="hidden" />
-            <template #panel>          
+            <template #panel>
               <div class="grid grid-cols-2 gap-3 p-3">
                 <NuxtLink
                   class="hover:bg-gray-800 rounded-md shadow duration-300 p-2 text-sm"
-                  :to="`/MovieGenres/${item.id}?genre_title=${item.name}`"
-                  v-for="(item, index) in MovieGenres"
+                  :to="`/Genres/${item.id}?genre_title=${item.name}`"
+                  v-for="(item, index) in Genres"
                   :key="index"
                 >
                   {{ item.name }}

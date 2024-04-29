@@ -19,9 +19,9 @@ const links = [
 const totalPages = ref([]);
 const page = ref(1);
 
-const fetchTVShow = async () => {
+const fetchMovie = async () => {
   try {
-    const data = await $fetch('/api/tv-show', {
+    const data = await $fetch('/api/movie', {
       method: 'POST',
       body: {
         page: page.value
@@ -37,19 +37,19 @@ const fetchTVShow = async () => {
 const prevPage = () => {
   if (page.value > 1) {
     page.value--;
-    fetchTVShow();
+    fetchMovie();
   }
 };
 
 const nextPage = () => {
   if (page.value < totalPages.value) {
     page.value++;
-    fetchTVShow();
+    fetchMovie();
   }
 };
 
 onMounted(() => {
-  fetchTVShow();
+  fetchMovie();
 });
 </script>
 

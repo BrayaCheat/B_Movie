@@ -16,14 +16,17 @@ const links = [
 ];
 
 const fetchSearchData = async () => {
-  await axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?query=${search_query}&api_key=8e832907917b59ca36ac1406c0ced35e`
-    )
-    .then((res) => {
-      searchData.value = res.data.results;
-    })
-    .catch((err) => console.log(err));
+  try {
+    const data = await $fetch('/api/search', {
+      method: 'POST',
+      body: {
+        search_query: search_query
+      }
+    });
+    searchData.value = data.results;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 onBeforeMount(() => {
