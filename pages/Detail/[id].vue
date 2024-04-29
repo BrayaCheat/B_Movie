@@ -34,7 +34,6 @@ const fetchMovieById = async () => {
       )
       .then((res) => {
         result.value = res.data;
-        videos.value = res.data.videos.results;
       });
   } catch (error) {
     console.log(error);
@@ -151,20 +150,20 @@ onMounted(() => {
       <Skeleton />
     </div>
     <!-- movie_trailer -->
-    <div class="my-10">
+    <!-- <div class="my-10">
       <h1
         class="lg:px-36 px-3 md:py-10 py-6 text-2xl text-gray-700 dark:text-gray-400"
       >
         Trailers
-      </h1>
-      <UCarousel
+      </h1> -->
+    <!-- <UCarousel
         v-if="videos"
         :ui="{ item: 'basis-full' }"
         :items="videos"
         class="lg:px-36 px-3"
       >
         <iframe
-          v-for="(vdo, index) in videos.slice(0, 4)"
+          v-for="(vdo, index) in videos"
           :key="index"
           class="me-4 rounded shadow-md md:w-[500px] md:h-[350px]"
           :src="getTrailer(vdo.key)"
@@ -174,8 +173,8 @@ onMounted(() => {
       </UCarousel>
       <div v-else>
         <Skeleton />
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </section>
   <bottomNav />
 </template>
