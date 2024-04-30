@@ -139,7 +139,7 @@ onMounted(() => {
         <UButton
           label="B-Movie"
           size="xl"
-          trailing="true"
+          trailing
           variant="none"
           class="lg:text-2xl text-sm ps-0 text-white dark:text-white"
           to="/"

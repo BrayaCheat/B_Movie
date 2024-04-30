@@ -7,11 +7,11 @@ import BottomNav from '~/components/bottomNav.vue';
   class="dark:bg-zinc-950"
   >
     <Carousel/>
-    <div class="flex lg:items-start gap-10 items-center lg:px-36 px-3">
+    <div class="flex lg:items-start gap-10 items-center xl:px-36 px-3">
       <sectionsLastestMovie class="lg:w-[70%]"/>
       <Sidebar class="w-[30%]"/>
     </div>
-    <div class="flex lg:items-start gap-10 items-center lg:px-36 p-3">
+    <div class="flex lg:items-start gap-10 items-center xl:px-36 p-3">
       <SectionsUpcomingMovie class="lg:w-[70%]"/>
       <Sidebar class="w-[30%]"/>
     </div>

@@ -46,7 +46,7 @@ onMounted(() => {
     </div>
     <div
       v-if="results"
-      class="grid lg:grid-cols-4 grid-cols-2 gap-2 place-items-center"
+      class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-2 place-items-center"
     >
       <div v-for="(result, index) in results" :key="index">
         <MovieCard :movie="result" />

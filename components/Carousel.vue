@@ -3,7 +3,7 @@ import axios from "axios";
 const carouselRef = ref();
 const image_url = "https://image.tmdb.org/t/p/original";
 const results = ref([]);
-const toast = useToast()
+const toast = useToast();
 
 const getImage = (imagePath) => {
   return image_url + imagePath;
@@ -41,8 +41,8 @@ const addToBookMark = (movieName, movieName1) => {
     title: `Bookmark Added!`,
     description: `${movieName || movieName1}`,
     icon: "i-heroicons-check-badge",
-  })
-}
+  });
+};
 </script>
 
 <template>
@@ -60,7 +60,9 @@ const addToBookMark = (movieName, movieName1) => {
     <div
       class="absolute flex mx-auto flex-col items-center justify-center z-20 w-full h-full lg:px-36 p-1 lg:pt-64 gap-3"
     >
-      <h1 class="lg:text-5xl text-xl text-white text-center md:mt-0 mt-28">{{ item.original_title }}</h1>
+      <h1 class="lg:text-5xl text-xl text-white text-center md:mt-0 mt-28">
+        {{ item.original_title }}
+      </h1>
       <div class="grid grid-cols-3 md:gap-3 gap-0">
         <UButton
           :label="item.popularity + ' views'"
@@ -87,7 +89,9 @@ const addToBookMark = (movieName, movieName1) => {
           block
         />
       </div>
-      <p class="text-gray-400 lg:text-lg text-xs text-gray-400 md:block hidden">{{ item.overview }}</p>
+      <p class="text-gray-400 lg:text-lg text-xs text-gray-400 md:block hidden">
+        {{ item.overview }}
+      </p>
       <div class="grid grid-cols-2 gap-3 mt-10">
         <UButton
           :to="`/Detail/${item.id}`"

@@ -17,7 +17,7 @@ const links = [
       click: () => {
         page.value = 2;
         fetchPopularMovie();
-      }
+      },
     },
     {
       label: "Week",
@@ -53,7 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="sidebar" class="lg:grid hidden gap-10 mt-10">
+  <section id="sidebar" class="lg:grid hidden gap-6 mt-10">
     <UHorizontalNavigation
       :links="links"
       class="border-b border-gray-200 dark:border-gray-800"

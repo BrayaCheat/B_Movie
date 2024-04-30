@@ -42,7 +42,7 @@ const shareTwitter = () => {
       class="card p-1 text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 rounded bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-950 dark:hover:border-primary hover:border-primary cursor-pointer shadow duration-300 overflow-hidden"
     >
       <!-- <div class="flex items-center justify-between w-full"> -->
-        <!-- <UButton
+      <!-- <UButton
           :label="'' || movie.vote_average.toFixed(1)"
           color="gray"
           variant="ghost"
@@ -117,21 +117,24 @@ const shareTwitter = () => {
         :to="`/Detail/${movie.id}`"
         class="grid place-items-center gap-3"
       >
-        <img :src="getImage(movie.poster_path)" class="object-cover"/>
-        <h1 id="movie_title" class="md:text-sm text-xs text-black dark:text-white text-center md:h-12 h-10 mt-3">
+        <img :src="getImage(movie.poster_path)" class="object-cover" />
+        <h1
+          id="movie_title"
+          class="md:text-sm text-xs text-black dark:text-white text-center md:h-12 h-10 mt-3"
+        >
           {{ movie.original_title || movie.original_name }}
         </h1>
       </NuxtLink>
     </div>
     <!-- loading... -->
     <div v-else>
-      <Skeleton/>
+      <Skeleton />
     </div>
   </section>
 </template>
 
 <style scoped>
-  #movie_title{
-    font-weight: 300;
-  }
+#movie_title {
+  font-weight: 300;
+}
 </style>

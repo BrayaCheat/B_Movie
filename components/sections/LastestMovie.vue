@@ -12,7 +12,7 @@ const links = [
   [
     {
       label: "See more",
-      to: '/Movie'
+      to: "/Movie",
     },
   ],
 ];
@@ -20,14 +20,14 @@ const links = [
 const fetchMovies = async () => {
   try {
     const response = await $fetch(`/api/lastestmovie`, {
-      method: 'POST',
+      method: "POST",
       body: {
-        page: page.value
-      }
-    })
-    results.value = response.results
+        page: page.value,
+      },
+    });
+    results.value = response.results;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -46,14 +46,14 @@ onMounted(() => {
     </div>
     <div
       v-if="results"
-      class="grid lg:grid-cols-4 grid-cols-2 gap-2 place-items-center"
+      class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-2 place-items-center"
     >
       <div v-for="(result, index) in results" :key="index">
         <MovieCard :movie="result" />
       </div>
     </div>
     <div v-else>
-      <Skeleton/>
+      <Skeleton />
     </div>
   </section>
 </template>
