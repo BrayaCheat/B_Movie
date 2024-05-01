@@ -55,7 +55,7 @@ const addToBookMark = (movieName, movieName1) => {
     indicators
   >
     <div
-      class="absolute bg-black backdrop-blur-xl w-full h-full opacity-70 z-10 bg-gradient-to-t from-black to-black"
+      class="absolute bg-black backdrop-blur-xl w-full h-full opacity-50 z-10 bg-gradient-to-t from-black to-black"
     />
     <div
       class="absolute flex mx-auto flex-col items-center justify-center z-20 w-full h-full lg:px-36 p-1 lg:pt-64 gap-3"

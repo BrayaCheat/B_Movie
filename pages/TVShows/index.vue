@@ -61,44 +61,27 @@ onMounted(() => {
         class="border-b border-gray-200 dark:border-gray-800 lg:mt-0 mt-20"
       />
     </div>
-    <div v-if="tvData" class="grid lg:grid-cols-5 grid-cols-2 lg:gap-10 gap-2 place-items-center">
+    <div
+      v-if="tvData"
+      class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 lg:gap-10 gap-2 place-items-center"
+    >
       <div v-for="(item, index) in tvData" :key="index">
         <MovieCard :movie="item" />
       </div>
-      <UPagination
-        class="lg:col-span-5 col-span-2 mt-10"
-        v-model="page"
-        :page-count="tvData.length"
-        :total="totalPages"
-      >
-        <template #prev>
-          <UTooltip text="Previous page">
-            <UButton
-              icon="i-heroicons-arrow-small-left-20-solid"
-              color="primary"
-              class="rtl:[&_span:first-child]:rotate-180 me-2 rounded-none"
-              @click="prevPage"
-              :disabled="page === 1"
-            />
-          </UTooltip>
-        </template>
-        <template #modelValue>
-          <div>
-            <h1>hello</h1>
-          </div>
-        </template>
-        <template #next>
-          <UTooltip text="Next page">
-            <UButton
-              icon="i-heroicons-arrow-small-right-20-solid"
-              color="primary"
-              class="rtl:[&_span:first-child]:rotate-180 ms-2 rounded-none"
-              @click="nextPage"
-              :disabled="page === totalPages"
-            />
-          </UTooltip>
-        </template>
-      </UPagination>
+      <!-- paginate -->
+      <div class="flex items-center gap-9 lg:col-span-5 md:col-span-4 col-span-2 my-9">
+        <UButton
+          @click="prevPage"
+          icon="i-heroicons-backward-20-solid"
+          color="white"
+        />
+        <span>{{ page }} / {{ totalPages }}</span>
+        <UButton
+          @click="nextPage"
+          icon="i-heroicons-forward-20-solid"
+          color="white"
+        />
+      </div>
     </div>
     <div v-else>
       <Skeleton/>
