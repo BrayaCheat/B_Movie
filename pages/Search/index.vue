@@ -56,7 +56,6 @@ onBeforeMount(() => {
 <template>
   <section id="search-result" class="lg:p-36 p-3 dark:bg-zinc-950">
     <UHorizontalNavigation :links="links" class="mt-20" />
-    Search Result: {{ searchData.length }}
     <div
       v-if="searchData"
       class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 lg:gap-10 gap-2 place-items-center"

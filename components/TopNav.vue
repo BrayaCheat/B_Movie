@@ -10,7 +10,8 @@ const isDark = computed({
     colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
   },
 });
-const searchQuery = ref("");
+const toast = useToast()
+const searchQuery = ref();
 const Genres = ref([]);
 const items = [
   // [
@@ -60,9 +61,17 @@ const items = [
 const showPopup = ref(false);
 
 const PassingSearch = () => {
-  navigateTo(`/Search?search_query=${searchQuery.value}`).then(() => {
-    location.reload();
-  });
+  if (!searchQuery.value) {
+    toast.add({
+      title: 'Textfield can not be blank!',
+      icon: 'i-heroicons-exclamation-triangle-20-solid',
+      color: 'red'
+    })
+  } else {
+    navigateTo(`/Search?search_query=${searchQuery.value}`).then(() => {
+      location.reload();
+    });
+  }
 };
 
 const getGenres = async () => {
@@ -95,10 +104,13 @@ onMounted(() => {
           :ui="{ item: { disabled: 'cursor-text select-text' } }"
           :popper="{ placement: 'bottom-start' }"
         >
+        <div class="duration-300 p-2 dark:hover-bg-gray-700 hover:bg-gray-800 rounded-md shadow-md">
           <Icon
-            name="i-material-symbols-light:lists-rounded"
+            name="i-solar:hamburger-menu-line-duotone"
             class="w-6 h-6 dark:text-white text-white"
           />
+        </div>
+         
 
           <template #account="{ item }">
             <div class="text-left">
