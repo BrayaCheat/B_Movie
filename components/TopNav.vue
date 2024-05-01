@@ -10,17 +10,11 @@ const isDark = computed({
     colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
   },
 });
-const toast = useToast()
+const toast = useToast();
 const searchQuery = ref();
 const Genres = ref([]);
+const isSlideover = ref(false);
 const items = [
-  // [
-  //   {
-  //     label: account.value.email,
-  //     slot: "account",
-  //     disabled: true,
-  //   },
-  // ],
   [
     {
       label: "Home",
@@ -34,28 +28,20 @@ const items = [
       icon: "i-heroicons-film-20-solid",
       to: "/Movie",
     },
+  ],
+  [
     {
       label: "TV Shows",
       icon: "i-heroicons-tv-20-solid",
       to: "/TVShows",
     },
+  ],
+  [
     {
       label: "Genres",
       icon: "i-heroicons-tag-20-solid",
-      click: () => {
-        showPopup.value = true;
-      },
     },
   ],
-  // [
-  //   {
-  //     label: "Sign out",
-  //     icon: "i-heroicons-arrow-left-on-rectangle",
-  //     click: () => {
-  //       alert("True");
-  //     },
-  //   },
-  // ],
 ];
 
 const showPopup = ref(false);
@@ -63,10 +49,10 @@ const showPopup = ref(false);
 const PassingSearch = () => {
   if (!searchQuery.value) {
     toast.add({
-      title: 'Textfield can not be blank!',
-      icon: 'i-heroicons-exclamation-triangle-20-solid',
-      color: 'red'
-    })
+      title: "Textfield can not be blank!",
+      icon: "i-heroicons-exclamation-triangle-20-solid",
+      color: "red",
+    });
   } else {
     navigateTo(`/Search?search_query=${searchQuery.value}`).then(() => {
       location.reload();
@@ -99,12 +85,12 @@ onMounted(() => {
       "
     >
       <div class="flex items-center gap-3">
-        <UDropdown
+        <!-- <UDropdown
           :items="items"
           :ui="{ item: { disabled: 'cursor-text select-text' } }"
           :popper="{ placement: 'bottom-start' }"
         >
-        <div class="duration-300 p-2 dark:hover-bg-gray-700 hover:bg-gray-800 rounded-md shadow-md">
+        <div class="duration-300 p-0.5 dark:hover-bg-gray-700 hover:bg-gray-800 rounded-md shadow-md">
           <Icon
             name="i-solar:hamburger-menu-line-duotone"
             class="w-6 h-6 dark:text-white text-white"
@@ -144,7 +130,33 @@ onMounted(() => {
               </div>
             </template>
           </UPopover>
-        </UDropdown>
+        </UDropdown> -->
+        <UButton
+          icon="i-heroicons-bars-3-20-solid"
+          color="white"
+          @click="isSlideover = true"
+        />
+        <USlideover v-model="isSlideover" side="left">
+          <div class="p-3">
+            <UButton
+              label="B-MOVIE"
+              color="white"
+              variant="none"
+              class="mb-6 text-2xl"
+            />
+            <UVerticalNavigation :links="items" />
+            <UVerticalNavigation :links="Genres">
+              <template #default="{ link }">
+                <NuxtLink
+                  class="hover:bg-gray-800 rounded-md shadow duration-300 ms-6 text-sm"
+                  :to="`/Genres/${link.id}?genre_title=${link.name}`"
+                >
+                  {{ link.name }}
+                </NuxtLink>
+              </template>
+            </UVerticalNavigation>
+          </div>
+        </USlideover>
         <!-- genres_popup -->
 
         <!-- home__btn -->

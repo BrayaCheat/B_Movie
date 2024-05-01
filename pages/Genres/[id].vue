@@ -71,7 +71,7 @@ onMounted(() => {
         <MovieCard :movie="item" />
       </div>
       <!-- paginate -->
-      <div class="flex items-center gap-9 lg:col-span-5 md:col-span-4 col-span-2 my-9">
+      <div class="flex items-center gap-9 lg:col-span-5 md:col-span-4 col-span-2 my-9 md:text-lg text-sm">
         <UButton
           @click="prevPage"
           icon="i-heroicons-backward-20-solid"

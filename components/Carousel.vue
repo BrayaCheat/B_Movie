@@ -68,7 +68,7 @@ const addToBookMark = (movieName, movieName1) => {
           :label="item.popularity + ' views'"
           icon="i-heroicons-eye"
           color="gray"
-          variant="none"
+          variant="ghost"
           class="lg:text-lg text-xs text-gray-400"
           block
         />
@@ -76,7 +76,7 @@ const addToBookMark = (movieName, movieName1) => {
           :label="item.release_date"
           icon="i-heroicons-calendar-days"
           color="gray"
-          variant="none"
+          variant="ghost"
           class="lg:text-lg text-xs text-gray-400"
           block
         />
@@ -84,7 +84,7 @@ const addToBookMark = (movieName, movieName1) => {
           :label="'Rating: ' + item.vote_average.toFixed(1)"
           icon="i-heroicons-star"
           color="gray"
-          variant="none"
+          variant="ghost"
           class="lg:text-lg text-xs text-gray-400"
           block
         />
@@ -100,7 +100,7 @@ const addToBookMark = (movieName, movieName1) => {
           color="primary"
           variant="solid"
           size="md"
-          trailing="true"
+          trailing
           class="text-white dark:text-white lg:text-lg text-xs text-gray-200 rounded-full"
           block
         />
@@ -111,7 +111,7 @@ const addToBookMark = (movieName, movieName1) => {
           color="primary"
           variant="ghost"
           size="md"
-          trailing="true"
+          trailing
           class="lg:text-lg text-xs text-gray-200 hover:text-black rounded-full"
           block
         />
