@@ -90,7 +90,7 @@ onMounted(() => {
       :class="
         $route.path === '/'
           ? 'bg-transparent absolute'
-          : 'fixed dark:bg-gray-900 bg-gray-800'
+          : 'fixed dark:bg-gray-900 bg-gray-600'
       "
     >
       <div class="flex items-center gap-3">
