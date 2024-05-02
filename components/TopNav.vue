@@ -162,7 +162,7 @@ onMounted(() => {
               />
             </div>
             <UVerticalNavigation :links="items" />
-            <UVerticalNavigation :links="Genres" class="h-screen overflow-auto">
+            <UVerticalNavigation :links="Genres" class="h-fit overflow-scroll">
               <template #default="{ link }">
                 <NuxtLink
                   class="duration-300 ms-6 text-sm relative w-full text-start"
