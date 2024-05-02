@@ -18,7 +18,7 @@ const items = [
   [
     {
       label: "Home",
-      icon: "i-heroicons-sparkles-20-solid",
+      icon: "i-heroicons-home-20-solid",
       to: "/",
     },
   ],
@@ -138,12 +138,15 @@ onMounted(() => {
         />
         <USlideover v-model="isSlideover" side="left">
           <div class="p-3">
-            <UButton
-              label="B-MOVIE"
-              color="white"
-              variant="none"
-              class="mb-6 text-2xl"
-            />
+            <div class="flex items-center justify-between">
+              <UButton
+                label="B-MOVIE"
+                color="white"
+                variant="none"
+                class="mb-6 text-2xl"
+              />
+              <UButton icon="i-heroicons-x-mark-20-solid" class="mb-6" color="white" @click="isSlideover = false"/>
+            </div>
             <UVerticalNavigation :links="items" />
             <UVerticalNavigation :links="Genres">
               <template #default="{ link }">
