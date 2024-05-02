@@ -50,8 +50,16 @@ const nextPage = () => {
   }
 }
 
+const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 onMounted(() => {
   getGenre();
+  scrollToTop();
 });
 </script>
 

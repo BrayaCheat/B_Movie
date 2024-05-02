@@ -28,7 +28,7 @@ const fetchTVShow = async () => {
       }
     });
     tvData.value = data.results;
-    totalPages.value = data.total_pages;
+    totalPages.value = 500;
   } catch (error) {
     console.log(error);
   }
@@ -48,8 +48,16 @@ const nextPage = () => {
   }
 };
 
+const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 onMounted(() => {
   fetchTVShow();
+  scrollToTop();
 });
 </script>
 

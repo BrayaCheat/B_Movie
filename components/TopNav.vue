@@ -20,6 +20,9 @@ const items = [
       label: "Home",
       icon: "i-heroicons-home-20-solid",
       to: "/",
+      click: () => {
+        isSlideover.value = false
+      }
     },
   ],
   [
@@ -27,6 +30,9 @@ const items = [
       label: "Movies",
       icon: "i-heroicons-film-20-solid",
       to: "/Movie",
+      click: () => {
+        isSlideover.value = false
+      }
     },
   ],
   [
@@ -34,6 +40,9 @@ const items = [
       label: "TV Shows",
       icon: "i-heroicons-tv-20-solid",
       to: "/TVShows",
+      click: () => {
+        isSlideover.value = false
+      }
     },
   ],
   [
@@ -145,14 +154,20 @@ onMounted(() => {
                 variant="none"
                 class="mb-6 text-2xl"
               />
-              <UButton icon="i-heroicons-x-mark-20-solid" class="mb-6" color="white" @click="isSlideover = false"/>
+              <UButton
+                icon="i-heroicons-x-mark-20-solid"
+                class="mb-6"
+                color="white"
+                @click="isSlideover = false"
+              />
             </div>
             <UVerticalNavigation :links="items" />
-            <UVerticalNavigation :links="Genres">
+            <UVerticalNavigation :links="Genres" class="h-screen overflow-auto">
               <template #default="{ link }">
                 <NuxtLink
-                  class="hover:bg-gray-800 rounded-md shadow duration-300 ms-6 text-sm"
+                  class="duration-300 ms-6 text-sm relative w-full text-start"
                   :to="`/Genres/${link.id}?genre_title=${link.name}`"
+                  @click="isSlideover = false"
                 >
                   {{ link.name }}
                 </NuxtLink>
