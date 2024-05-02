@@ -152,17 +152,17 @@ onMounted(() => {
                 label="B-MOVIE"
                 color="white"
                 variant="none"
-                class="mb-6 text-2xl"
+                class="mb-3 text-2xl"
               />
               <UButton
                 icon="i-heroicons-x-mark-20-solid"
-                class="mb-6"
+                class="mb-3"
                 color="white"
                 @click="isSlideover = false"
               />
             </div>
             <UVerticalNavigation :links="items" />
-            <UVerticalNavigation :links="Genres" class="h-fit overflow-scroll">
+            <UVerticalNavigation :links="Genres">
               <template #default="{ link }">
                 <NuxtLink
                   class="duration-300 ms-6 text-sm relative w-full text-start"
