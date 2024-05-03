@@ -41,7 +41,7 @@ const shareTwitter = () => {
       v-if="movie"
       class="card p-1.5 text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 rounded-md bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-950 dark:hover:border-primary hover:border-primary cursor-pointer shadow duration-300 overflow-hidden"
     >
-      <div class="flex items-center justify-between w-full">
+      <!-- <div class="flex items-center justify-between w-full">
         <UButton
           :label="'' || movie.vote_average.toFixed(1)"
           color="gray"
@@ -113,7 +113,7 @@ const shareTwitter = () => {
             </div>
           </template>
         </UPopover>
-      </div>
+      </div> -->
       <NuxtLink
         :to="`/Detail/${movie.id}`"
         class="grid place-items-center gap-3"

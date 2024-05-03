@@ -64,6 +64,7 @@ const fetchMovieById = async () => {
       )
       .then((res) => {
         result.value = res.data;
+        console.log(result.value)
       });
   } catch (error) {
     console.log(error);

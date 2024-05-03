@@ -6,7 +6,8 @@ const results = ref([]);
 const links = [
   [
     {
-      label: "Lastest Movies",
+      label: "Recommended",
+      to: '/'
     },
   ],
   [

@@ -7,6 +7,7 @@ const links = [
   [
     {
       label: "Upcoming Movies",
+      to: '/'
     },
   ],
   [

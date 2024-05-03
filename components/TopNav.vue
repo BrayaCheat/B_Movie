@@ -21,8 +21,8 @@ const items = [
       icon: "i-heroicons-home-20-solid",
       to: "/",
       click: () => {
-        isSlideover.value = false
-      }
+        isSlideover.value = false;
+      },
     },
   ],
   [
@@ -31,8 +31,8 @@ const items = [
       icon: "i-heroicons-film-20-solid",
       to: "/Movie",
       click: () => {
-        isSlideover.value = false
-      }
+        isSlideover.value = false;
+      },
     },
   ],
   [
@@ -41,8 +41,8 @@ const items = [
       icon: "i-heroicons-tv-20-solid",
       to: "/TVShows",
       click: () => {
-        isSlideover.value = false
-      }
+        isSlideover.value = false;
+      },
     },
   ],
   [
@@ -146,7 +146,7 @@ onMounted(() => {
           @click="isSlideover = true"
         />
         <USlideover v-model="isSlideover" side="left">
-          <div class="p-3">
+          <div class="p-3 overflow-auto">
             <div class="flex items-center justify-between">
               <UButton
                 label="B-MOVIE"
