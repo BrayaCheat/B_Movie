@@ -3,6 +3,23 @@ const { movie } = defineProps(["movie"]);
 const image_url = "https://image.tmdb.org/t/p/w500";
 const toast = useToast();
 
+const getDetailMovie = async () => {
+  try {
+    const response = await $fetch("/api/detail", {
+      method: "POST",
+      body: {
+        id: movie.id,
+      },
+    });
+    detailMovie.value = response;
+    console.log(detailMovie.value);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const detailMovie = ref();
+
 const addToBookMark = (movieName, movieName1) => {
   toast.add({
     title: `Bookmark Added!`,
@@ -33,12 +50,16 @@ const shareTwitter = () => {
   const twitterShareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${tweet}`;
   window.open(twitterShareUrl, "_blank");
 };
+
+onMounted(() => {
+  getDetailMovie();
+});
 </script>
 
 <template>
   <section id="movie-card">
     <div
-      v-if="movie"
+      v-if="detailMovie"
       class="card p-1.5 text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 rounded-md bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-950 dark:hover:border-primary hover:border-primary cursor-pointer shadow duration-300 overflow-hidden"
     >
       <!-- <div class="flex items-center justify-between w-full">
@@ -115,18 +136,26 @@ const shareTwitter = () => {
         </UPopover>
       </div> -->
       <NuxtLink
-        :to="`/Detail/${movie.id}`"
+        :to="`/Detail/${detailMovie.id}`"
         class="grid place-items-center gap-3"
-      >
-        <img
-          :src="getImage(movie.poster_path)"
-          class="object-cover rounded-md"
+      >       
+          <img
+            :src="getImage(detailMovie.poster_path)"
+            class="object-cover rounded-md"
+          />
+        <UButton
+          :label="`Movie - ${detailMovie.release_date.slice(0, 4)} - ${
+            detailMovie.runtime
+          } mins`"
+          color="gray"
+          class="rounded-md"
+          size="xs"
         />
         <h1
           id="movie_title"
           class="md:text-sm text-xs text-black dark:text-white text-center md:h-12 h-10 mt-3"
         >
-          {{ movie.original_title || movie.original_name }}
+          {{ detailMovie.original_title || detailMovie.original_name }}
         </h1>
       </NuxtLink>
     </div>

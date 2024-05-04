@@ -8,7 +8,7 @@ const result = ref();
 const image_url = "https://image.tmdb.org/t/p/original";
 const videos = ref();
 const youtubeURL = `https://www.youtube.com/embed/`;
-const toast = useToast()
+const toast = useToast();
 
 const label = [
   [
@@ -58,14 +58,13 @@ const shareTwitter = () => {
 
 const fetchMovieById = async () => {
   try {
-    await axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=8e832907917b59ca36ac1406c0ced35e&append_to_response=videos`
-      )
-      .then((res) => {
-        result.value = res.data;
-        console.log(result.value)
-      });
+    const response = await $fetch(`/api/detail`, {
+      method: 'POST',
+      body: {
+        id: id,      
+      }
+    })
+    result.value = response
   } catch (error) {
     console.log(error);
   }
