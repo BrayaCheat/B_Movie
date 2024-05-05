@@ -31,7 +31,7 @@ const links = [
 <template>
   <footer>
     <div
-      class="flex items-center justify-center lg:px-44 lg:py-10 px-3 py-20 dark:bg-black bg-gray-200"
+      class="flex items-center justify-center lg:px-36 lg:py-10 px-3 py-20 dark:bg-black bg-gray-200"
     >
       <UHorizontalNavigation
         :links="links"

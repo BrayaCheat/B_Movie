@@ -28,6 +28,7 @@ const fetchMovie = async () => {
       },
     });
     movieData.value = data.results;
+    console.log(movieData.value)
     totalPages.value = 500;
   } catch (error) {
     console.log(error);

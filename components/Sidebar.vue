@@ -58,7 +58,7 @@ onMounted(() => {
       :links="links"
       class="border-b border-gray-200 dark:border-gray-800"
     />
-    <div v-for="(movieData, index) in movieData" :key="index">
+    <div v-for="(movieData, index) in movieData.slice(0,14)" :key="index">
       <MiniCard :movieData="movieData" />
     </div>
   </section>

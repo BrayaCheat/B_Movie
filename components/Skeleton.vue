@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col items-start space-x-4">
-    <USkeleton class="h-12 w-12" :ui="{ rounded: 'rounded-full' }" />
-    <div class="space-y-2">
-      <USkeleton class="h-4 w-[250px]" />
-      <USkeleton class="h-4 w-[200px]" />
+  <div class="grid gap-3">
+    <USkeleton class="md:h-[250px] md:w-fit" />
+    <div class="space-y-2 w-full">
+      <USkeleton class="md:h-8 md:w-[200px]" />
+      <USkeleton class="md:h-8 md:w-[200px]" />
     </div>
   </div>
 </template>
