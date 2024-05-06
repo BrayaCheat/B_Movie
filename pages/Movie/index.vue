@@ -16,7 +16,7 @@ const links = [
     },
   ],
 ];
-const totalPages = ref([]);
+const totalPages = ref();
 const page = ref(1);
 
 const fetchMovie = async () => {
@@ -28,8 +28,7 @@ const fetchMovie = async () => {
       },
     });
     movieData.value = data.results;
-    console.log(movieData.value)
-    totalPages.value = 500;
+    totalPages.value = 10000
   } catch (error) {
     console.log(error);
   }
@@ -56,6 +55,17 @@ const scrollToTop = () => {
   });
 };
 
+const changePage = (p) => {
+  page.value = p
+  fetchMovie()
+};
+
+watch(page, (n,o) => {
+  if(n){
+    changePage(n)
+  }
+})
+
 onMounted(() => {
   fetchMovie();
   scrollToTop();
@@ -78,18 +88,43 @@ onMounted(() => {
         <MovieCard :movie="item" />
       </div>
       <!-- paginate -->
-      <div class="flex items-center gap-9 lg:col-span-5 md:col-span-4 col-span-2 my-9 md:text-lg text-sm">
-        <UButton
-          @click="prevPage"
-          icon="i-heroicons-backward-20-solid"
-          color="white"
-        />
-        <span>{{ page }} / {{ totalPages }}</span>
-        <UButton
-          @click="nextPage"
-          icon="i-heroicons-forward-20-solid"
-          color="white"
-        />
+      <div
+        class="flex items-center gap-9 lg:col-span-5 md:col-span-4 col-span-2 my-9 md:text-lg text-sm"
+      >
+        <UPagination
+          :pageCount="movieData.length"
+          v-model="page"
+          :total="totalPages"
+          :ui="{
+            rounded: 'first-of-type:rounded-s-md last-of-type:rounded-e-md',
+          }"
+        >
+          <template #prev>
+            <UTooltip text="Previous page">
+              <UButton
+                icon="i-heroicons-arrow-small-left-20-solid"
+                color="primary"
+                :ui="{ rounded: 'rounded-full' }"
+                class="rtl:[&_span:first-child]:rotate-180 me-2"
+                @click="prevPage"
+                :disabled="page === 1"
+              />
+            </UTooltip>
+          </template>
+
+          <template #next>
+            <UTooltip text="Next page">
+              <UButton
+                icon="i-heroicons-arrow-small-right-20-solid"
+                color="primary"
+                :ui="{ rounded: 'rounded-full' }"
+                class="rtl:[&_span:last-child]:rotate-180 ms-2"
+                @click="nextPage"
+                :disabled="page === 500"
+              />
+            </UTooltip>
+          </template>
+        </UPagination>
       </div>
     </div>
     <div v-else>
@@ -98,3 +133,9 @@ onMounted(() => {
   </section>
   <bottomNav />
 </template>
+
+<style scoped>
+#paginate {
+  font-weight: 300;
+}
+</style>

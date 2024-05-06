@@ -20,6 +20,7 @@ const { movie } = defineProps(["movie"]);
 const getImage = (imagePath) => {
   return image_url + imagePath;
 };
+
 </script>
 
 <template>
@@ -40,19 +41,23 @@ const getImage = (imagePath) => {
           class="flex items-center gap-1 text-xs py-1 px-2 dark:bg-gray-800 bg-gray-300 rounded-md shadow-sm"
         >
           <h1>Movie -</h1>
-          <h1>{{ movie.release_date.slice(0, 4) }} -</h1>
-          <UButton
-            trailing
-            :label="`${movie.vote_average.toFixed(1)}`"
-            variant="ghost"
-            class="p-0 text-xs"
-          />
+          <h1 v-if="movie.release_date">
+            {{ movie.release_date.slice(0, 4) }} -
+          </h1>
+          <h1 class="flex items-center gap-1">
+            <Icon
+              name="i-ic:baseline-star"
+              size="12"
+              class="text-yellow-200"
+            />{{ movie.vote_average.toFixed(1) }}
+          </h1>
         </div>
         <h1
+          v-if="movie.original_title"
           id="movie_title"
           class="md:text-sm text-xs text-black dark:text-white text-center md:h-12 h-10 mt-3"
         >
-          {{ movie.original_title.slice(0,20) || movie.original_name.slice(0,20) }}...
+          {{ movie.original_title.slice(0, 40) }}...
         </h1>
       </NuxtLink>
     </div>

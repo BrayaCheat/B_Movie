@@ -99,9 +99,9 @@ const addToBookMark = (movieName, movieName1) => {
           icon="i-heroicons-play"
           color="primary"
           variant="solid"
-          size="md"
+          size="lg"
           trailing
-          class="text-white dark:text-white lg:text-lg text-xs text-gray-200 rounded-full"
+          class="text-white dark:text-white lg:text-[16px] text-xs text-gray-200 rounded-full"
           block
         />
         <UButton
@@ -110,9 +110,9 @@ const addToBookMark = (movieName, movieName1) => {
           icon="i-heroicons-heart"
           color="primary"
           variant="ghost"
-          size="md"
+          size="lg"
           trailing
-          class="lg:text-lg text-xs text-gray-200 hover:text-black rounded-full"
+          class="lg:text-[16px] text-xs text-gray-200 hover:text-black rounded-full"
           block
         />
       </div>

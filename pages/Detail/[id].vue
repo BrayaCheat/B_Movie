@@ -59,12 +59,14 @@ const shareTwitter = () => {
 const fetchMovieById = async () => {
   try {
     const response = await $fetch(`/api/detail`, {
-      method: 'POST',
+      method: "POST",
       body: {
-        id: id,      
-      }
-    })
-    result.value = response
+        id: id,
+      },
+    });
+    result.value = response;
+    videos.value = response.videos.results;
+    console.log(videos.value);
   } catch (error) {
     console.log(error);
   }
@@ -238,37 +240,25 @@ onMounted(() => {
             </li>
           </ul>
         </div>
+
+        <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-1 place-items-center gap-10 lg:col-span-2 col-span-1">
+          <UHorizontalNavigation :links="label" class="border-b border-gray-200 dark:border-gray-800 lg:col-span-5 md:col-span-4 col-span-1" />
+          <iframe
+            class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300"
+            v-for="vdo in videos"
+            :key="vdo.key"
+            :src="getTrailer(vdo.key)"
+            frameborder="0"
+          ></iframe>
+        </div>
+        <div v-else>
+          <Skeleton/>
+        </div>
       </div>
     </div>
     <div v-else>
       <Skeleton />
     </div>
-    <!-- movie_trailer -->
-    <!-- <div class="my-10">
-      <h1
-        class="lg:px-36 px-3 md:py-10 py-6 text-2xl text-gray-700 dark:text-gray-400"
-      >
-        Trailers
-      </h1> -->
-    <!-- <UCarousel
-        v-if="videos"
-        :ui="{ item: 'basis-full' }"
-        :items="videos"
-        class="lg:px-36 px-3"
-      >
-        <iframe
-          v-for="(vdo, index) in videos"
-          :key="index"
-          class="me-4 rounded shadow-md md:w-[500px] md:h-[350px]"
-          :src="getTrailer(vdo.key)"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </UCarousel>
-      <div v-else>
-        <Skeleton />
-      </div> -->
-    <!-- </div> -->
   </section>
   <bottomNav />
 </template>

@@ -90,59 +90,14 @@ onMounted(() => {
       :class="
         $route.path === '/'
           ? 'bg-transparent absolute'
-          : 'fixed dark:bg-gray-900 bg-gray-600'
+          : 'fixed dark:bg-gray-900 bg-gray-800'
       "
     >
       <div class="flex items-center gap-3">
-        <!-- <UDropdown
-          :items="items"
-          :ui="{ item: { disabled: 'cursor-text select-text' } }"
-          :popper="{ placement: 'bottom-start' }"
-        >
-        <div class="duration-300 p-0.5 dark:hover-bg-gray-700 hover:bg-gray-800 rounded-md shadow-md">
-          <Icon
-            name="i-solar:hamburger-menu-line-duotone"
-            class="w-6 h-6 dark:text-white text-white"
-          />
-        </div>
-         
-
-          <template #account="{ item }">
-            <div class="text-left">
-              <p>Signed in as</p>
-              <p class="truncate font-medium text-gray-900 dark:text-white">
-                {{ item.label }}
-              </p>
-            </div>
-          </template>
-
-          <template #item="{ item }">
-            <span class="truncate">{{ item.label }}</span>
-
-            <UIcon
-              :name="item.icon"
-              class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto"
-            />
-          </template>
-          <UPopover v-model:open="showPopup">
-            <UButton class="hidden" />
-            <template #panel>
-              <div class="grid grid-cols-2 gap-3 p-3">
-                <NuxtLink
-                  class="hover:bg-gray-800 rounded-md shadow duration-300 p-2 text-sm"
-                  :to="`/Genres/${item.id}?genre_title=${item.name}`"
-                  v-for="(item, index) in Genres"
-                  :key="index"
-                >
-                  {{ item.name }}
-                </NuxtLink>
-              </div>
-            </template>
-          </UPopover>
-        </UDropdown> -->
         <UButton
           icon="i-heroicons-bars-3-20-solid"
-          color="white"
+          class="dark:text-gray-200 text-gray-200"
+          variant="none"
           @click="isSlideover = true"
         />
         <USlideover v-model="isSlideover" side="left">
@@ -192,9 +147,11 @@ onMounted(() => {
         <UInput
           icon="i-heroicons-magnifying-glass"
           placeholder="Search movies..."
-          class="md:w-[500px] w-[220px]"
+          class="md:w-[500px] w-[220px] text-black font-medium"
           size="xs"
           v-model="searchQuery"
+          variant="solid"
+          color="primary"
         />
       </form>
       <!-- Toggle__DarkMode -->
