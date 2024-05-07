@@ -241,10 +241,10 @@ onMounted(() => {
           </ul>
         </div>
 
-        <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-1 place-items-center gap-10 lg:col-span-2 col-span-1">
-          <UHorizontalNavigation :links="label" class="border-b border-gray-200 dark:border-gray-800 lg:col-span-5 md:col-span-4 col-span-1" />
+        <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 place-items-center md:gap-10 gap-2 lg:col-span-2 col-span-1">
+          <UHorizontalNavigation :links="label" class="border-b border-gray-200 dark:border-gray-800 lg:col-span-5 md:col-span-4 col-span-2" />
           <iframe
-            class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300 md:w-auto w-full md:h-auto h-[300px] rounded shadow border border-gray-800 hover:border-primary"
+            class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300 md:w-auto w-full md:h-auto h-[200px] rounded shadow border border-gray-800 hover:border-primary"
             v-for="vdo in videos"
             :key="vdo.key"
             :src="getTrailer(vdo.key)"
