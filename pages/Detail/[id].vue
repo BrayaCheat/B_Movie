@@ -86,7 +86,7 @@ onMounted(() => {
       class="bg-cover"
     >
       <div
-        class="grid lg:grid-cols-2 grid-cols-1 lg:gap-0 gap-10 place-items-start w-full h-full backdrop-blur-md backdrop-brightness-50 lg:p-36 p-3 lg:mt-0 mt-16"
+        class="grid lg:grid-cols-2 grid-cols-1 lg:gap-0 gap-10 md:place-items-start place-items-stretch w-full h-full backdrop-blur-md backdrop-brightness-50 lg:p-36 p-3 lg:mt-0 mt-16"
       >
         <img
           :src="getImage(result.poster_path)"
@@ -244,7 +244,7 @@ onMounted(() => {
         <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-1 place-items-center gap-10 lg:col-span-2 col-span-1">
           <UHorizontalNavigation :links="label" class="border-b border-gray-200 dark:border-gray-800 lg:col-span-5 md:col-span-4 col-span-1" />
           <iframe
-            class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300"
+            class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300 md:w-auto w-full md:h-auto h-[300px] rounded shadow border border-gray-800 hover:border-primary"
             v-for="vdo in videos"
             :key="vdo.key"
             :src="getTrailer(vdo.key)"
