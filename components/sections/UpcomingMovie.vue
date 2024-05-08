@@ -7,7 +7,7 @@ const links = [
   [
     {
       label: "Upcoming Movies",
-      to: '/'
+      to: "/",
     },
   ],
   [
@@ -42,11 +42,12 @@ onMounted(() => {
     <div class="flex items-center justify-start gap-6">
       <UHorizontalNavigation
         :links="links"
+        class="border-b border-gray-200 dark:border-gray-800"
       />
     </div>
     <div
       v-if="results"
-      class="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-2 place-items-center"
+      class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-2 place-items-center"
     >
       <div v-for="(result, index) in results" :key="index">
         <MovieCard :movie="result" />

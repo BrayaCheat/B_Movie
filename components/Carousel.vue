@@ -13,7 +13,7 @@ const fetchMovies = async () => {
   try {
     await axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?page=9&api_key=8e832907917b59ca36ac1406c0ced35e`
+        `/api/carousel`
       )
       .then((res) => {
         results.value = res.data.results;

@@ -38,9 +38,9 @@ const links = [
 
 const fetchPopularMovie = async () => {
   await axios
-    .get(
-      `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page.value}&api_key=8e832907917b59ca36ac1406c0ced35e&limit=10`
-    )
+    .post(`/api/sidebar`, {
+      page: page.value,
+    })
     .then((res) => {
       movieData.value = res.data.results;
     })
@@ -58,7 +58,7 @@ onMounted(() => {
       :links="links"
       class="border-b border-gray-200 dark:border-gray-800"
     />
-    <div v-for="(movieData, index) in movieData.slice(0,14)" :key="index">
+    <div v-for="(movieData, index) in movieData.slice(0,19)" :key="index">
       <MiniCard :movieData="movieData" />
     </div>
   </section>
