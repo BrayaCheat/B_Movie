@@ -18,7 +18,7 @@ const items = [
   [
     {
       label: "Home",
-      icon: "i-heroicons-home-20-solid",
+      icon: "i-heroicons-home",
       to: "/",
       click: () => {
         isSlideover.value = false;
@@ -28,7 +28,7 @@ const items = [
   [
     {
       label: "Movies",
-      icon: "i-heroicons-film-20-solid",
+      icon: "i-heroicons-film",
       to: "/Movie",
       click: () => {
         isSlideover.value = false;
@@ -38,7 +38,7 @@ const items = [
   [
     {
       label: "TV Shows",
-      icon: "i-heroicons-tv-20-solid",
+      icon: "i-heroicons-tv",
       to: "/TVShows",
       click: () => {
         isSlideover.value = false;
@@ -48,7 +48,7 @@ const items = [
   [
     {
       label: "Genres",
-      icon: "i-heroicons-tag-20-solid",
+      icon: "i-heroicons-tag",
     },
   ],
 ];
