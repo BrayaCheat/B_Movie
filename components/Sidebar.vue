@@ -53,12 +53,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="sidebar" class="lg:grid hidden gap-6 mt-10">
+  <section id="sidebar" class="lg:grid hidden gap-3 mt-10">
     <UHorizontalNavigation
       :links="links"
-      class="border-b border-gray-200 dark:border-gray-800"
+      class="border-b border-gray-200 dark:border-gray-800 mb-7"
     />
-    <div v-for="(movieData, index) in movieData.slice(0,19)" :key="index">
+    <div v-for="(movieData, index) in movieData" :key="index">
       <MiniCard :movieData="movieData" />
     </div>
   </section>
