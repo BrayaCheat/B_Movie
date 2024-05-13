@@ -1,4 +1,3 @@
-<!-- https://api.themoviedb.org/3/discover/tv -->
 <script setup>
 import axios from "axios";
 

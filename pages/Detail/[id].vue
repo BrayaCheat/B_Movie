@@ -1,5 +1,8 @@
-<!-- https://api.themoviedb.org/3/movie/823464?api_key=8e832907917b59ca36ac1406c0ced35e -->
 <script setup>
+// definePageMeta({
+//   middleware: 'permission'
+// })
+
 import axios from "axios";
 
 const route = useRoute();
@@ -66,7 +69,6 @@ const fetchMovieById = async () => {
     });
     result.value = response;
     videos.value = response.videos.results;
-    console.log(videos.value);
   } catch (error) {
     console.log(error);
   }
@@ -108,71 +110,7 @@ onMounted(() => {
               color="gray"
               icon="i-heroicons-clock"
               :label="`${result.runtime} mins`"
-            />
-            <UPopover>
-              <UButton
-                icon="i-heroicons-ellipsis-horizontal"
-                color="gray"
-                variant="ghost"
-              />
-
-              <template #panel>
-                <div class="p-1 grid gap-2">
-                  <UButton
-                    @click="
-                      addToBookMark(result.original_title, result.original_name)
-                    "
-                    label="Add to bookmark"
-                    icon="i-heroicons-bookmark"
-                    color="gray"
-                    variant="ghost"
-                  />
-                  <UButton
-                    @click="isOpen = true"
-                    label="Share"
-                    icon="i-heroicons-share"
-                    color="gray"
-                    variant="ghost"
-                  />
-
-                  <UModal v-model="isOpen">
-                    <div class="flex p-4 items-center justify-between">
-                      <h1>Sharing with</h1>
-                      <UButton
-                        @click="isOpen = false"
-                        icon="i-heroicons-x-mark"
-                        color="gray"
-                        variant="ghost"
-                      />
-                    </div>
-                    <UDivider />
-                    <div class="p-4 flex items-center gap-10">
-                      <UTooltip text="Share with facebook">
-                        <Icon
-                          @click="shareFacebook"
-                          name="i-logos:facebook"
-                          class="w-10 h-10 cursor-pointer"
-                        />
-                      </UTooltip>
-                      <UTooltip text="Share with twitter">
-                        <Icon
-                          @click="shareTwitter"
-                          name="i-skill-icons:twitter"
-                          class="w-10 h-10 cursor-pointer"
-                        />
-                      </UTooltip>
-                      <UTooltip text="Share with linkedin">
-                        <Icon
-                          @click="shareLinkedIn"
-                          name="i-devicon:linkedin"
-                          class="w-10 h-10 cursor-pointer"
-                        />
-                      </UTooltip>
-                    </div>
-                  </UModal>
-                </div>
-              </template>
-            </UPopover>
+            />          
           </div>
           <UButton
             :label="result.original_title"
@@ -241,11 +179,11 @@ onMounted(() => {
           </ul>
         </div>
 
-        <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 place-items-center md:gap-10 gap-2 lg:col-span-2 col-span-1">
+        <!-- <div v-if="videos" id="Trailer" class="mt-20 grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 place-items-center md:gap-10 gap-2 lg:col-span-2 col-span-1">
           <UHorizontalNavigation :links="label" class="border-b border-gray-200 dark:border-gray-800 lg:col-span-5 md:col-span-4 col-span-2" />
           <iframe
             class="p-1 dark:bg-gray-900 bg-gray-800 shadow duration-300 md:w-auto w-full md:h-auto h-[200px] rounded shadow border border-gray-800 hover:border-primary"
-            v-for="vdo in videos"
+            v-for="vdo in videos.slice(0,4)"
             :key="vdo.key"
             :src="getTrailer(vdo.key)"
             frameborder="0"
@@ -253,7 +191,7 @@ onMounted(() => {
         </div>
         <div v-else>
           <Skeleton/>
-        </div>
+        </div> -->
       </div>
     </div>
     <div v-else>
