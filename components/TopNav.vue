@@ -86,7 +86,7 @@ onMounted(() => {
 <template>
   <section id="top-nav">
     <nav
-      class="z-40 top-0 w-full flex flex-wrap items-center justify-between lg:px-36 p-3 md:py-6 uppercase"
+      class="z-40 top-0 w-full flex flex-wrap items-center justify-between lg:px-36 p-3 md:py-3 uppercase"
       :class="
         $route.path === '/'
           ? 'bg-transparent absolute'

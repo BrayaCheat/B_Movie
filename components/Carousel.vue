@@ -92,7 +92,7 @@ const addToBookMark = (movieName, movieName1) => {
       <p class="text-gray-400 lg:text-lg text-xs text-gray-400 md:block hidden">
         {{ item.overview }}
       </p>
-      <div class="grid grid-cols-2 gap-3 mt-10">
+      <div class="grid place-items-center mt-10">
         <UButton
           :to="`/Detail/${item.id}`"
           label="Watch Now"
@@ -104,7 +104,7 @@ const addToBookMark = (movieName, movieName1) => {
           class="text-white dark:text-white lg:text-[16px] text-xs text-gray-200 rounded-full"
           block
         />
-        <UButton
+        <!-- <UButton
           @click="addToBookMark(item.original_title, item.title)"
           label="Add Bookmark"
           icon="i-heroicons-heart"
@@ -114,7 +114,7 @@ const addToBookMark = (movieName, movieName1) => {
           trailing
           class="lg:text-[16px] text-xs text-gray-200 hover:text-black rounded-full"
           block
-        />
+        /> -->
       </div>
     </div>
     <img
